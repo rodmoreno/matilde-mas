@@ -6,13 +6,14 @@ on:
       - main
       - frontend
 
+defaults:
+  run:
+    working-directory: ./frontend
+
 jobs:
   build:
     runs-on: ubuntu-latest
     name: Build
-    defaults:
-      run:
-        working-directory: [frontend]
     steps:
     - uses: actions/checkout@v3
     - name: Use Node.js 16.x
@@ -26,9 +27,6 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
     name: Deploy
-    defaults:
-      run:
-        working-directory: [frontend]
     steps:
       - uses: actions/checkout@v2
       - name: Publish
